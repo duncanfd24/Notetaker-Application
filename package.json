@@ -1,6 +1,11 @@
 {
   "dependencies": {
     "express": "^4.19.2",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0"},
+  
+    "scripts": {
+      "build": "npm run build",
+      "start": "node server.js"
+    }
   }
-}
+
