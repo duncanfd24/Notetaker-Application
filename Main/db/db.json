@@ -1,0 +1,22 @@
+[
+  {
+    "id": "a1605d70-d342-4400-a973-cbdfd943f4e6",
+    "title": "Example 1",
+    "text": "This is note 1."
+  },
+  {
+    "id": "6bad69a7-26e0-48b2-a815-70dbc880e0a2",
+    "title": "Example 2",
+    "text": "This is note 2."
+  },
+  {
+    "id": "f44eb776-f0e5-4eec-8554-c290bff49e91",
+    "title": "Example 3",
+    "text": "This is note 3."
+  },
+  {
+    "id": "4328e748-688b-4f77-affa-102e7283660b",
+    "title": "Example 4",
+    "text": "This is note 4."
+  }
+]

@@ -4,6 +4,7 @@
 // let saveNoteBtn;
 // let newNoteBtn;
 // let noteList;
+// let clearBtn;
 
 // if (window.location.pathname === '/notes') {
 //   noteForm = document.querySelector('.note-form');
@@ -12,7 +13,7 @@
 //   saveNoteBtn = document.querySelector('.save-note');
 //   newNoteBtn = document.querySelector('.new-note');
 //   clearBtn = document.querySelector('.clear-btn');
-//   noteList = document.querySelectorAll('.list-container .list-group');
+//   noteList = document.querySelector('.list-container .list-group');
 // }
 
 // // Show an element
@@ -34,23 +35,44 @@
 //     headers: {
 //       'Content-Type': 'application/json'
 //     }
+//   }).then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response.json();
+//   }).catch(error => {
+//     console.error('Error fetching notes:', error);
+//     return [''];
 //   });
 
 // const saveNote = (note) =>
-//   fetch('/api/notes', {
+//   fetch('/notes', {
 //     method: 'POST',
 //     headers: {
 //       'Content-Type': 'application/json'
 //     },
 //     body: JSON.stringify(note)
+//   }).then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response.json();
+//   }).catch(error => {
+//     console.error('Error saving note:', error);
 //   });
 
 // const deleteNote = (id) =>
-//   fetch(`/api/notes/${id}`, {
+//   fetch(`/notes/${id}`, {
 //     method: 'DELETE',
 //     headers: {
 //       'Content-Type': 'application/json'
 //     }
+//   }).then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//   }).catch(error => {
+//     console.error('Error deleting note:', error);
 //   });
 
 // const renderActiveNote = () => {
@@ -85,7 +107,6 @@
 
 // // Delete the clicked note
 // const handleNoteDelete = (e) => {
-//   // Prevents the click listener for the list from being called when the button inside of it is clicked
 //   e.stopPropagation();
 
 //   const note = e.target;
@@ -108,7 +129,7 @@
 //   renderActiveNote();
 // };
 
-// // Sets the activeNote to and empty object and allows the user to enter a new note
+// // Sets the activeNote to an empty object and allows the user to enter a new note
 // const handleNewNoteView = (e) => {
 //   activeNote = {};
 //   show(clearBtn);
@@ -129,9 +150,19 @@
 
 // // Render the list of note titles
 // const renderNoteList = async (notes) => {
-//   let jsonNotes = await notes.json();
+//   let jsonNotes = await notes;
+  
+//   // Add a console log to check the contents of jsonNotes
+//   console.log('jsonNotes:', jsonNotes);
+  
+//   // Check if jsonNotes is defined and is an array
+//   if (!Array.isArray(jsonNotes)) {
+//     console.error('Invalid notes data:', jsonNotes);
+//     jsonNotes = [];
+//   }
+
 //   if (window.location.pathname === '/notes') {
-//     noteList.forEach((el) => (el.innerHTML = ''));
+//     noteList.innerHTML = '';
 //   }
 
 //   let noteListItems = [];
@@ -177,7 +208,7 @@
 //   });
 
 //   if (window.location.pathname === '/notes') {
-//     noteListItems.forEach((note) => noteList[0].append(note));
+//     noteListItems.forEach((note) => noteList.append(note));
 //   }
 // };
 
@@ -424,4 +455,3 @@ if (window.location.pathname === '/notes') {
 }
 
 getAndRenderNotes();
-
